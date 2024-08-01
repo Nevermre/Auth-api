@@ -1,0 +1,32 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+      - aws eks --region sa-east-1 update-kubeconfig --name eks-sefaz-ce-dev
+  build:
+    commands:
+      - echo Deploy RC started on `date`
+      - echo Adding $IMAGE_TAG to latest image...
+      - latestDigest=$(aws ecr batch-get-image --repository-name $IMAGE_REPO_NAME --image-ids imageTag=latest --output json | jq --raw-output --join-output '.images[0].imageId.imageDigest')
+      - RCDigest=$(aws ecr batch-get-image --repository-name $IMAGE_REPO_NAME --image-ids imageTag=$IMAGE_TAG --output json | jq --raw-output --join-output '.images[0].imageId.imageDigest')
+      - |
+        if [ "$latestDigest" == "$RCDigest" ]; then 
+          echo "Images has already same tag."; 
+        else
+          MANIFEST=$(aws ecr batch-get-image --repository-name $IMAGE_REPO_NAME --image-ids imageTag=latest --output json | jq --raw-output --join-output '.images[0].imageManifest')
+          aws ecr put-image --repository-name $IMAGE_REPO_NAME --image-tag $IMAGE_TAG --image-manifest "$MANIFEST"
+        fi
+      - echo done.
+  post_build:
+    commands:
+      - cd $CODEBUILD_SRC_DIR_DEVOPS
+      - echo Updating api on namespace sophia-auth-homol
+      - kubectl delete -f k8s/namespaces/sophia-auth-homol/srv/auth.yml
+      - sleep 5
+      - kubectl apply -f k8s/namespaces/sophia-auth-homol/srv/auth.yml
+      - echo done.
+      - sleep 5
+      - echo done.

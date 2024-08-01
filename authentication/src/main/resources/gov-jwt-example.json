@@ -1,0 +1,53 @@
+{
+  "exp": 1685468232,
+  "iat": 1685467932,
+  "auth_time": 1685467911,
+  "jti": "",
+  "iss": "",
+  "aud": [
+    "broker",
+    "account"
+  ],
+  "sub": "83e36bae-4811-41d0-8f0a-7ee8769616e2",
+  "typ": "Bearer",
+  "azp": "",
+  "session_state": "cd3b74b1-6964-4638-8d7c-31c0bc3afd0e",
+  "acr": "1",
+  "allowed-origins": [
+    ""
+  ],
+  "realm_access": {
+    "roles": [
+      "offline_access",
+      "default-roles-loginpa",
+      "uma_authorization"
+    ]
+  },
+  "resource_access": {
+    "broker": {
+      "roles": [
+        "read-token"
+      ]
+    },
+    "account": {
+      "roles": [
+        "manage-account",
+        "manage-account-links",
+        "view-profile"
+      ]
+    }
+  },
+  "scope": "openid email profile",
+  "sid": "cd3b74b1-6964-4638-8d7c-31c0bc3afd0e",
+  "email_verified": true,
+  "amr_gvbr": "passwd",
+  "name": "Lucas Cunha Peres Rodrigues",
+  "cpf": "",
+  "phone_number_verified": true,
+  "phone_number": "31982565824",
+  "preferred_username": "",
+  "given_name": "",
+  "family_name": "",
+  "email": "",
+  "picture": "https://sso.staging.acesso.gov.br/userinfo/picture"
+}

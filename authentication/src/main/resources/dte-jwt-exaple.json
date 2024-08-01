@@ -1,0 +1,40 @@
+{
+    "loggedIn": true,
+    "qtdProcuracoes": 14,
+    "token": "261c0b8e-faf9-47a6-8fdb-1c322fc2c287",
+    "usuario": {
+      "codigo": 3347748,
+      "dataCriacao": "2020-05-13T13:33:11",
+      "cpfCnpj": "03064136399",
+      "tipoIdentificacao": 1,
+      "nomeRazaoSocial": "",
+      "situacao": 1,
+      "dataInativacao": null,
+      "email": "",
+      "ddd": "85",
+      "celular": "",
+      "detalhe": {
+        "codigo": 5026601,
+        "dataCriacao": "2021-09-08T14:34:18",
+        "ativo": true,
+        "dataAlteracao": null,
+        "cep": "",
+        "logradouro": "",
+        "numero": "78",
+        "complemento": null,
+        "dddTelefoneComercial": null,
+        "telefoneComercial": null,
+        "emailComercial": "",
+        "inscricaoMunicipal": "0091007",
+        "oab": null,
+        "seccionalOab": null,
+        "tipoOab": null,
+        "situacaoOab": null
+      }
+    },
+    "perfilAcesso": {
+      "codigo": 3,
+      "descricao": "",
+      "ativo": true
+    }
+  }
